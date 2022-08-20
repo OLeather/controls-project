@@ -43,7 +43,7 @@ if __name__ == "__main__":
     ts = []
     for t in np.arange(0, 10, dt):
         u = -K * (x - x_ref)
-        theta, theta_dot = sim_pendulum(g, L, d, x, u, dt)
+        theta, theta_dot = sim_pendulum(L, d, g, x, u, dt)
         x = np.matrix([[theta],
                        [theta_dot]])
         xs.append(float(x[0]))
