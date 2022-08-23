@@ -36,10 +36,10 @@ B = np.matrix([[0],
 # Discretize A and B matrices to form X_k+1 = Ad*X_k + Bd*U_k
 Ad, Bd = discretize(A, B, dt)
 
-x0 = np.matrix([[-2],  # x
-                [0],  # x_dot
-                [pi - .1],  # theta
-                [0]])  # theta_dot
+x = np.matrix([[-2],  # x
+               [0],  # x_dot
+               [pi - .1],  # theta
+               [0]])  # theta_dot
 
 x_goal = np.matrix([[2],  # x
                     [0],  # x_dot
@@ -90,7 +90,7 @@ line1, line2, line3, fig = setup_pendulum_cart_plot()
 
 
 def run_sim(i):
-    global x0
+    global x
     # Get optimal control input u from MPC
     u = mpc(x0)
 

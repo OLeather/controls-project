@@ -15,8 +15,8 @@ if __name__ == "__main__":
     L = 2
     d = 1
 
-    x0 = np.matrix([[0],  # theta
-                    [0]])  # theta_dot
+    x = np.matrix([[0],  # theta
+                   [0]])  # theta_dot
 
     s = -1  # pendulum up (1) or down (-1)
 
@@ -42,11 +42,11 @@ if __name__ == "__main__":
     x_traj = []
     ts = []
     for t in np.arange(0, 10, dt):
-        u = -K * (x0 - x_ref)
-        theta, theta_dot = sim_pendulum(L, d, g, x0, u, dt)
-        x0 = np.matrix([[theta],
-                        [theta_dot]])
-        x_traj.append(float(x0[0]))
+        u = -K * (x - x_ref)
+        theta, theta_dot = sim_pendulum(L, d, g, x, u, dt)
+        x = np.matrix([[theta],
+                       [theta_dot]])
+        x_traj.append(float(x[0]))
         ts.append(t)
 
     fig, ax = plt.subplots()

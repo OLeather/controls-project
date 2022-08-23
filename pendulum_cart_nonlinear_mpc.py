@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
     # MPC parameters
     T = 2  # Time horizon
-    N = 25  # Number of control intervals
+    N = 10  # Number of control intervals
 
     # Initial state and goal state variables
     x0 = np.matrix([[0], [0], [0], [0]])
@@ -29,22 +29,22 @@ if __name__ == "__main__":
     x3 = MX.sym('x3')  # theta
     x4 = MX.sym('x4')  # theta_dot
 
-    x0 = vertcat(x1, x2, x3, x4)
+    x = vertcat(x1, x2, x3, x4)
 
     # Control input symbol
     u = MX.sym('u', 1)
 
     # Nonlinear inverted pendulum equations
-    x_dot = vertcat(x0[1],
-                    (-m ** 2 * L ** 2 * g * cos(x0[2]) * sin(x0[2]) + m * L ** 2 * (
-                            m * L * x0[3] ** 2 * sin(x0[2]) - d * x0[1]) + m * L ** 2 * u) / (
-                            m * L ** 2 * (M + m * (1 - cos(x0[2]) ** 2))),
-                    x0[3],
-                    ((m + M) * m * g * L * sin(x0[2]) - m * L * cos(x0[2]) * (
-                            m * L * x0[2] ** 2 * sin(x0[2]) - d * x0[1]) - m * L * cos(x0[2]) * u) / (
-                            m * L ** 2 * (M + m * (1 - cos(x0[2]) ** 2))))
+    x_dot = vertcat(x[1],
+                    (-m ** 2 * L ** 2 * g * cos(x[2]) * sin(x[2]) + m * L ** 2 * (
+                            m * L * x[3] ** 2 * sin(x[2]) - d * x[1]) + m * L ** 2 * u) / (
+                            m * L ** 2 * (M + m * (1 - cos(x[2]) ** 2))),
+                    x[3],
+                    ((m + M) * m * g * L * sin(x[2]) - m * L * cos(x[2]) * (
+                            m * L * x[2] ** 2 * sin(x[2]) - d * x[1]) - m * L * cos(x[2]) * u) / (
+                            m * L ** 2 * (M + m * (1 - cos(x[2]) ** 2))))
 
-    ode = {'x': x0, 'p': u, 'ode': x_dot}
+    ode = {'x': x, 'p': u, 'ode': x_dot}
     SysModel = integrator('F', 'rk', ode, {'tf': T / N})
 
     # Setup CasADI optimizer

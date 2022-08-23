@@ -24,10 +24,10 @@ if __name__ == "__main__":
     d = 1
     g = -9.8
 
-    x0 = np.matrix([[-2],  # x
-                    [0],  # x_dot
-                    [pi+.1],  # theta
-                    [0]])  # theta_dot
+    x = np.matrix([[-2],  # x
+                   [0],  # x_dot
+                   [pi+.1],  # theta
+                   [0]])  # theta_dot
 
     s = 1  # pendulum up (1) or down (-1)
 
@@ -68,15 +68,15 @@ if __name__ == "__main__":
 
     # plt.pause(2)
     for t in np.arange(0, 10, dt):
-        u = -K * (x0 - x_ref)
+        u = -K * (x - x_ref)
         # u = np.matrix([[0]])
-        x0, x_dot, theta, theta_dot = sim_pendulum_cart(m, M, L, d, g, x0, u, dt)
-        x0 = np.matrix([[x0],
-                        [x_dot],
-                        [theta],
-                        [theta_dot]])
-        x_traj.append(float(x0[0]))
-        thetas.append(float(x0[2]))
+        x, x_dot, theta, theta_dot = sim_pendulum_cart(m, M, L, d, g, x, u, dt)
+        x = np.matrix([[x],
+                       [x_dot],
+                       [theta],
+                       [theta_dot]])
+        x_traj.append(float(x[0]))
+        thetas.append(float(x[2]))
         u_traj.append(float(u))
         ts.append(t)
 
