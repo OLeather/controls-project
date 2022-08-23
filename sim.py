@@ -21,7 +21,7 @@ def sim_pendulum_cart(m, M, L, d, g, x0, u, dt):
 
     x_dot_dot = (-m**2 * L**2 * g * cos(theta) * sin(theta) + m * L**2 * (m * L * theta_dot**2 * sin(theta) - d * x_dot) + m * L**2 * u) / (m * L**2 * (M + m * (1 - cos(theta)**2)))
 
-    theta_dot_dot = ((m + M) * m * g * L * sin(theta) - m * L * cos(theta) * (m * L * theta_dot**2 * sin(theta) - d * x_dot) + m * L * cos(theta) * -u) / (m * L**2 * (M + m * (1 - cos(theta)**2)))
+    theta_dot_dot = ((m + M) * m * g * L * sin(theta) - m * L * cos(theta) * (m * L * theta_dot**2 * sin(theta) - d * x_dot) - m * L * cos(theta) * u) / (m * L**2 * (M + m * (1 - cos(theta)**2)))
 
     x_dot = x_dot + x_dot_dot * dt
     x = x + x_dot * dt
