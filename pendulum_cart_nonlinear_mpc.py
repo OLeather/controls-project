@@ -114,13 +114,12 @@ if __name__ == "__main__":
         t += 0.01
         print(t)
 
-
         # Setpoints
         if t > 1:
             x_goal = np.matrix([[0], [0], [pi], [0]])
-        if t > 7.5:
+        if t > 6:
             x_goal = np.matrix([[-4], [0], [pi], [0]])
-        if t > 12.5:
+        if t > 11:
             x_goal = np.matrix([[4], [0], [pi], [0]])
 
         x0 = SysModel1(x0=x0, p=u_traj[0])["xf"]
