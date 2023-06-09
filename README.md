@@ -1,7 +1,8 @@
 # Inverted Pendulum Controls
 
-<video src="/images/videos/Figure_1_2022-08-19_16-13-00.mp4" class="h-96 aspect-video" controls=""></video>
-#### Linear State Space Control of Inverted Pendulum
+https://github.com/OLeather/controls-project/assets/43189206/7c8a7419-8450-44bf-8af2-049afb6091f9
+
+<p align="center">Figure 1: Linear State Space Control of Inverted Pendulum</p>
 
 I have been learning about modern control theory through online resources such as [Steve Bruntun's Controls Bootcamp](https://www.youtube.com/watch?v=Pi7l8mMjYVE&list=PLMrJAkhIeNNR20Mz-VpzgfQs5zrYi085m). As an exercise to apply my learning of state space and model predictive control, I worked on a project to stabilize an inverted pendulum on a cart -- a classic controls project. I did multiple exercises, including linear state space control, linearized model predictive control, and nonlinear model predictive control. The code can be found on my public repo <i class="fa fa-github"></i> [controls-project](https://github.com/OLeather/controls-project).
 
@@ -108,5 +109,5 @@ opti.subject_to(x_traj_param[:, -1] == x_goal_param)
 opti.subject_to(Opti_bounded(-u_max, u_traj_param, u_max))
 ```
 
-<video src="/images/videos/Figure_1_2022-08-22_18-47-37 (1).mp4" class="h-96 aspect-video" controls=""></video>
-#### Nonlinear Model Predictive Control Swing Up and Balancing
+https://github.com/OLeather/controls-project/assets/43189206/4ef70674-c29f-4bc0-b7fc-fed8c1b781dd
+<p align="center">Figure 2: Nonlinear Model Predictive Control Swing Up and Balancing</p>
